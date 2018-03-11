@@ -26,7 +26,7 @@ def lrelu(x, n, leak=0.2):
 def process_data():   
     current_dir = os.getcwd()
     # parent = os.path.dirname(current_dir)
-    pokemon_dir = os.path.join(current_dir, 'data')
+    pokemon_dir = os.path.join(current_dir, 'resized_black')
     images = []
     for each in os.listdir(pokemon_dir):
         images.append(os.path.join(pokemon_dir,each))
@@ -238,8 +238,8 @@ def train():
 
             # print 'train:[%d/%d],d_loss:%f,g_loss:%f' % (i, j, dLoss, gLoss)
             
-        # save check point every 500 epoch
-        if i%500 == 0:
+        # save check point every 500 epoch, 500, 50
+        if i%500 == 0: 
             if not os.path.exists('./model/' + version):
                 os.makedirs('./model/' + version)
             saver.save(sess, './model/' +version + '/' + str(i))  
